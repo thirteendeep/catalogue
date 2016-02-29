@@ -1,0 +1,24 @@
+@media print {
+	
+	/***navigation***/
+	nav,
+	.nav,
+	.menu{
+		display: none !important;
+	}
+	
+	/***buttons***/
+	button,
+	.button,
+	.btn{
+		display: none !important;
+	}
+	
+	/***components***/
+
+	/***links***/
+	a[href]:after {
+		content: none !important;
+	}
+
+}

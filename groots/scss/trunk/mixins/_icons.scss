@@ -1,0 +1,339 @@
+$fs-base       : 16px; // define value for 1rem
+$s-icon        : 1.5em; // change this value to control icon size
+$c-icon        : #f0f0f0;
+$s-icon-bar    : 2px;
+$s-icon-radius : 2px;
+
+// ========================================
+// Helper / Convert px to em
+// ========================================
+
+@function em($pixels, $context: $fs-base) {
+    @return #{$pixels/$context}em;
+}
+
+// ========================================
+// Mixin
+// ========================================
+
+@mixin animated-icon($type: 'hamburger', $variante: 'default', $color: #fff, $bar: 2px, $radius: 0) {
+    @if not index(hamburger plus arrow search, $type) {
+        @error "Type must be either `hamburger`, `plus`, `arrow` or `search`.";
+    }
+
+    position: relative;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+        content: '';
+    }
+
+    span,
+    &:before,
+    &:after {
+        position: absolute;
+        display: block;
+        background-color: $color;
+        border-radius: em($radius);
+        transition: transform .2s;
+    }
+
+    // =======================================
+    // Mixin / Hamburger
+    // =======================================
+
+    @if $type == hamburger {
+        @if not index(default cross, $variante) {
+            @error "Variant for hamburger icon must be either `default` or `cross`.";
+        }
+
+        width: $s-icon * 1.8;
+        height: $s-icon;
+
+        span,
+        &:before,
+        &:after {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+            width: 100%;
+            height: em($bar);
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        span {
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+            transition: opacity .1s ease-in-out;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+
+        @include mq(md) {
+            &:hover {
+                &:before {
+                    top: -10%;
+                }
+
+                &:after {
+                    bottom: -10%;
+                }
+            }
+        }
+
+        @if $variante == default {
+            &.is-active,
+            .has-nav-main-open & {
+                &:before {
+                    top: 50%;
+                    transform: translate3d(0, -50%, 0);
+                }
+
+                &:after {
+                    bottom: 50%;
+                    transform: translate3d(0, 50%, 0);
+                }
+            }
+        }
+
+        @if $variante == cross {
+            &:before,
+            &:after {
+                transform-origin: center;
+            }
+
+            &.is-active,
+            .has-nav-main-open & {
+                &:before {
+                    top: 50%;
+                    transform: translate3d(0, -50%, 0) rotate(45deg);
+                }
+
+                span {
+                    opacity: 0;
+                }
+
+                &:after {
+                    bottom: 50%;
+                    transform: translate3d(0, 50%, 0) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    // =======================================
+    // Mixin / Plus
+    // =======================================
+
+    @if $type == plus {
+        @if not index(default cross, $variante) {
+            @error "Variant for plus icon must be either `default` or `cross`.";
+        }
+
+        width: $s-icon;
+        height: $s-icon;
+
+        &:before {
+            top: 50%;
+            left: 0;
+            transform: translate3d(0, -50%, 0) rotate(0);
+            width: 100%;
+            height: em($bar);
+        }
+
+        &:after {
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0) rotate(0);
+            width: em($bar);
+            height: 100%;
+        }
+
+        @if $variante == default {
+            &.is-active {
+                &:before {
+                    transform: translate3d(0, -50%, 0) rotate(180deg);
+                }
+
+                &:after {
+                    transform: translate3d(-50%, -50%, 0) rotate(90deg);
+                }
+            }
+        }
+
+        @if $variante == cross {
+            &:before,
+            &:after {
+                transform-origin: center;
+            }
+
+            &.is-active {
+                &:before {
+                    transform: translate3d(0, -50%, 0) rotate(135deg);
+                }
+
+                &:after {
+                    transform: translate3d(-50%, -50%, 0) rotate(135deg);
+                }
+            }
+        }
+    }
+
+    // =======================================
+    // Mixin / Arrow
+    // =======================================
+
+    @if $type == arrow {
+        @if not index(default cross, $variante) {
+            @error "Variant for arrow icon must be either `default` or `cross`.";
+        }
+
+        width: $s-icon;
+        height: $s-icon;
+
+        &:before,
+        &:after {
+            top: 50%;
+            width: 80%;
+            height: em($bar);
+        }
+
+        &:before {
+            left: 10%;
+            transform: translate3D(-30%, -50%, 0) rotate(45deg);
+        }
+
+        &:after {
+            right: 10%;
+            transform: translate3D(30%, -50%, 0) rotate(-45deg);
+        }
+
+        @if $variante == default {
+            &:before,
+            &:after {
+                transition: all .15s;
+            }
+
+            &.is-active {
+                &:before {
+                    width: 80%;
+                    transform: translate3d(-30%, -50%, 0) rotate(-45deg);
+                }
+
+                &:after {
+                    width: 80%;
+                    transform: translate3d(30%, -50%, 0) rotate(45deg);
+                }
+            }
+        }
+
+        @if $variante == cross {
+            &.is-active {
+                &:before {
+                    width: 100%;
+                    transform: translate3d(-10%, -50%, 0) rotate(45deg);
+                }
+
+                &:after {
+                    width: 100%;
+                    transform: translate3d(10%, -50%, 0) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    // =======================================
+    // Mixin / Search
+    // =======================================
+
+    @if $type == search {
+        width: $s-icon;
+        height: $s-icon;
+        transition: transform .2s;
+
+        &:before,
+        &:after {
+            bottom: 0;
+            right: 10%;
+            width: 50%;
+            height: em($bar);
+            transform: rotate(45deg);
+            transform-origin: right bottom;
+        }
+
+        span {
+            display: block;
+            top: 0;
+            left: 0;
+            width: .5em;
+            height: .5em;
+            border: em($bar) solid $color;
+            border-radius: 100%;
+            background-color: transparent;
+            transform: scale(1);
+        }
+
+        &.is-active {
+            transform: rotate(90deg);
+
+            &:before,
+            &:after {
+                bottom: 50%;
+                right: 0;
+                width: 100%;
+                transform-origin: center;
+            }
+
+            &:before {
+                transform: translate3d(0, 50%, 0) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate3d(0, 50%, 0) rotate(135deg);
+            }
+
+            span {
+                transform: scale(0);
+            }
+        }
+    }
+}
+
+// ========================================
+// Icons
+// ========================================
+
+.icon {
+    &--hamburger {
+        @include animated-icon('hamburger', 'default', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--hamburger-cross {
+        @include animated-icon('hamburger', 'cross', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--plus {
+        @include animated-icon('plus', 'default', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--plus-cross {
+        @include animated-icon('plus', 'cross', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--arrow {
+        @include animated-icon('arrow', 'default', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--arrow-cross {
+        @include animated-icon('arrow', 'cross', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+
+    &--search {
+        @include animated-icon('search', 'default', $c-icon, $s-icon-bar, $s-icon-radius);
+    }
+}

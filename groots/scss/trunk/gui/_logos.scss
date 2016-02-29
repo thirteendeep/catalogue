@@ -1,0 +1,11 @@
+.gui__logos {
+
+    img {
+        width: 30%;
+        padding: 1em;
+
+        @include mq(md) {
+          width: 16%;
+        }
+    }
+}

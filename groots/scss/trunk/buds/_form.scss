@@ -1,0 +1,469 @@
+// ==========================================================================
+// Form
+// ==========================================================================
+
+@mixin form(
+    $class              : '.form',
+    $form-size          : 50px,
+    $form-border        : $border,
+    $form-radius        : $radius,
+    $form-margin        : $margin,
+    $form-padding       : $padding
+) {
+
+   // #{$class} {
+
+        font-size: 1em;
+
+        fieldset {
+            min-width: 0; // Fix overflow custom field
+            legend {}
+        }
+
+        :focus {
+            outline-style: none;
+            box-shadow: none;
+        }
+
+        .form-item,
+        .form-item--inline {
+            position: relative;
+            margin-bottom: $form-margin;
+            @extend %clearfix;
+            label {
+                line-height: 1.44;
+                display: inline-block;
+            }
+        }
+        .form-item--inline {
+            label {
+                line-height: $form-size;
+                margin-right: $gutter-width;
+            }
+        }
+
+
+        // Input
+        // --------------------------------------------------
+        // @example html - Usage
+        //   <div class="form-item--wide">
+        //     <input type="text" id="" value="" placeholder="Example of Text Input">
+        //     <label for="">Name</label>
+        //   </div>
+        //
+        // The value attribute is required
+
+        @each $input in $text-inputs-list {
+
+            #{$input} {
+                @include placeholder {
+                    opacity: 1;
+                    transition: opacity .3s;
+                }
+                border: $form-border;
+                border-radius:  $form-radius;
+                padding: 0 $form-padding;
+                height: $form-size;
+                line-height: $form-size;
+                display: inline-block;
+                max-width: 100%;
+                width: 100%;
+
+                .form-item--inline & {
+                    width : auto;
+                }
+
+                &.input--left-icon,
+                &.input--right-icon {
+                    &~.fa {
+                        line-height: inherit;
+                        position: absolute;
+                        top: $root-line-height * 1em;
+                        padding: 0 $form-padding;
+                        height: $form-size;
+                        line-height: $form-size;
+
+                    }
+                }
+                &.input--left-icon {
+                    padding-left: 4 * $form-padding;
+                    &~.fa {
+                        left: 0;
+                        margin-right: $form-padding;
+                        @if $form-border {
+                            border-right: $form-border;
+                        }
+                    }
+                }
+                &.input--right-icon {
+                    padding-right: 4 * $form-padding;
+                    &~.fa {
+                        right: 0;
+                        margin-left: $form-padding;
+                        @if $form-border {
+                            border-left: $form-border;
+                        }
+                    }
+                }
+
+                &:focus {
+                    border-color: $color--primary;
+                    @include placeholder {
+                        opacity: .5;
+                    }
+                    &.input--left-icon ~ .fa,
+                    &.input--right-icon ~ .fa {
+                        border-color: $color--primary;
+                        color: $color--primary;
+                    }
+                }
+            }
+
+            @if $input == 'textarea' {
+                #{$input} {
+                    height: $form-size * 5;
+                }
+            }
+        }
+
+        input[type="submit"],
+        button {
+            @extend .btn;
+            cursor: pointer;
+        }
+
+
+        // Radio + Checkbox
+        // --------------------------------------------------
+        // @example html - Usage
+        //  <div class="form-item--wide">
+        //     <div class="radio-wrapper">
+        //         <div class="radio">
+        //             <input type="radio" name="" id="">
+        //             <label for="">Opt IN</label>
+        //         </div>
+        //         <div class="radio">
+        //             <input type="radio" name="" id="">
+        //             <label for="">Opt Out</label>
+        //         </div>
+        //     </div>
+        // </div>
+        // <div class="form-item--wide">
+        //     <div class="checkbox-wrapper">
+        //         <div class="checkbox">
+        //             <input type="checkbox" name="" id="">
+        //             <label for="">Remember me</label>
+        //         </div>
+        //     </div>
+        // </div>
+
+        $radio-size : $form-size / 2;
+
+        .radio-wrapper,
+        .checkbox-wrapper {
+
+            @include clearfix;
+            margin-top: 0.3125em;
+
+            .form-item--inline & {
+                .radio,
+                .checkbox {
+                    float: left;
+                }
+            }
+
+            input[type=radio],
+            input[type=checkbox] {
+                display: none;
+            }
+
+            label:before,
+            input[type=radio] + label:after,
+            input[type=checkbox] + label:after,
+            input[type=radio]:checked + label:after {
+                width: $radio-size;
+                height: $radio-size;
+            }
+
+            label:before,
+            input[type=radio] + label:after,
+            input[type=checkbox] + label:after {
+                position: absolute;
+                left:0;
+                top:0;
+            }
+
+            label {
+                position: relative;
+                display: inline-block;
+                padding-left: $radio-size * 1.25;
+                line-height: $radio-size;
+                min-height: $radio-size;
+                cursor: pointer;
+
+                &:before {
+                    display: inline-block;
+                    content: "";
+                    background-color: $white;
+                    border: $form-border;
+                    transition: border-color $transition--fast ease-in-out;
+                }
+                &:hover:before {
+                    border-color: color('brand', 'secondary');
+                }
+            }
+
+            .radio, .checkbox {
+                margin-right: 1.25em;
+                label {
+                    margin-bottom: .625em;
+                }
+            }
+
+            .checkbox label:before {
+                border-radius: 0;
+            }
+            .radio label:before {
+                border-radius: 50%;
+            }
+
+            input[type=radio] + label:after {
+                font-size: $radio-size / 1.8;
+                //content: $fa-var-circle;
+                font-family: $ff__fa;
+                content: "\f111";
+            }
+            input[type=checkbox] + label:after {
+                font-size: $radio-size / 1.25;
+                //content: $fa-var-check;
+                font-family: $ff__fa;
+                content: "\f00c";
+            }
+
+            input[type=radio] + label:after,
+            input[type=checkbox] + label:after {
+                @extend .fa;
+                display: block;
+                text-align: center;
+                opacity: 0;
+                line-height: $radio-size;
+                color: color('brand', 'secondary');
+                transition: all $transition--fast ease-in-out;
+                transform: scale(0);
+            }
+            input[type=radio]:checked + label:after,
+            input[type=checkbox]:checked + label:after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        // Select
+        // --------------------------------------------------
+        // @example html - Usage
+        //   <select class="gr-select">
+        //     <option value="hide">All platforms</option>
+        //     <option value="mobile-game">Mobile game</option>
+        //      <option value="playstation">Playstation</option>
+        //     <option value="xbox">Xbox</option>
+        //   </select>
+
+        .select {
+            position: relative;
+            height: $form-size;
+            cursor: pointer;
+
+            select:focus ~ .select-styled,
+            select:focus ~ .select-options {
+                border-color: $color--primary;
+            }
+
+            .select-hidden {
+                opacity:0;
+                height: $form-size;
+            }
+
+            .select-styled {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                line-height: $form-size;
+                text-align: left;
+                padding: 0 $form-padding;
+                border: $form-border;
+                border-radius: $form-radius;
+                transition: border-radius $transition--fast ease-in-out;
+
+                &:after {
+                    @extend .fa;
+                    //content: $fa-var-angle-down;
+                    font-family: $ff__fa;
+                    content: "\f107";
+                    font-size: 1.5em;
+                    position: absolute;
+                    top: 0;
+                    right: $margin;
+                    line-height: $form-size;
+                    transition: transform $transition--fast ease-in-out;
+                }
+
+                &:focus,
+                &:active,
+                &.is-active {
+                    border-radius: $form-radius $form-radius  0 0;
+                    &:after {
+                        transform: rotate(-180deg);
+                    }
+                }
+            }
+
+            .select-options {
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top:  100%;
+                right: 0;
+                left: 0;
+                z-index: 50;
+                text-align: left;
+                background: $snow-white;
+                border-radius: 0 0 $form-radius $form-radius;
+                transition: height $transition--fast ease-in-out;
+
+                li {
+                    padding: $form-padding;
+                    list-style-type: none;
+
+                    &:last-child {
+                        border-radius: 0 0 $form-radius $form-radius;
+                    }
+                    &[rel="hide"] {
+                        display: none;
+                    }
+                }
+
+                &.is-active {
+                    border: $form-border;
+                    margin-top: -1px;
+                    height: auto;
+                }
+            }
+
+            &.is-inverted {
+                .select-styled {
+                    &:focus,
+                    &:active,
+                    &.is-active {
+                        border-radius: 0 0 $form-radius $form-radius;
+                    }
+                }
+
+                .select-options {
+                    top: auto;
+                    bottom: 100%;
+                    margin-bottom: 0;
+                    border-radius: $form-radius $form-radius 0 0;
+
+                    &.is-active {
+                        margin-top: 0;
+                        margin-bottom: -1px;
+                    }
+                }
+            }
+        }
+
+        // Input [type=file]
+        // --------------------------------------------------
+
+        .file-upload--btn,
+        .file-upload--input {
+            cursor: pointer;
+            input[type=file] {
+                display: none;
+            }
+            label {
+                &:after {
+                    @extend .fa;
+                    //content: $fa-var-upload;
+                    font-family: $ff__fa;
+                    content: "\f093";
+                }
+                &.is-ready {
+                    &:after {
+                       //content: $fa-var-cloud-upload;
+                       font-family: $ff__fa;
+                       content: "\f0ee";
+                    }
+                }
+            }
+        }
+        .file-upload--btn {
+            display: inline-block;
+            label {
+                @extend .btn;
+                &:after {
+                    margin-left: $form-margin;
+                }
+            }
+        }
+        .file-upload--input {
+            label {
+                @extend input[type="text"];
+                padding-right: 4 * $form-padding;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                &:after {
+                    position: absolute;
+                    padding: 0 $form-padding;
+                    top: 0;
+                    right: 0;
+                    line-height: $form-size;
+                    transition: transform $transition--fast ease-in-out;
+                    @if $form-border {
+                        border-left: $form-border;
+                    }
+                }
+            }
+        }
+
+
+        // Parsley
+        // --------------------------------------------------
+
+        .form-item.parsley-error,
+        .form-item--inline.parsley-error {
+            input,
+            select,
+            textarea,
+            input.input--left-icon ~ .fa,
+            input.input--left-icon:focus ~ .fa,
+            input.input--right-icon ~ .fa,
+            input.input--right-icon:focus ~ .fa,
+            .select-styled,
+            .checkbox label:before,
+            .radio label:before,
+            .file-upload--btn label,
+            .file-upload--input label {
+                border-color: $color--error;
+                color: $color--error;
+            }
+        }
+
+        .parsley-errors-list {
+            list-style: none;
+            color: $color--error;
+            .form-item & {
+                float: left;
+            }
+            .form-item--inline & {
+                display: inline-block;
+                float: right;
+            }
+            margin-bottom: $form-margin;
+        }
+    //}
+}

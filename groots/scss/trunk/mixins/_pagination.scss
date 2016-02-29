@@ -1,0 +1,127 @@
+// ==========================================================================
+// Paginator
+// ==========================================================================
+
+@mixin pagination($component: 'pagination') {
+
+	[class^="#{$component}"] {
+
+		&[class$="container"] {
+			text-align: center;
+		}
+
+		&[class$="#{$component}"] {
+			display: inline-block;
+			overflow: hidden;
+			list-style: none;
+			margin-top: 1em;
+			font-size: 1em;
+		}
+
+		& {
+			[disabled] { cursor: default; }
+
+			li {
+				display: inline-block;
+				float: left;
+
+				a,
+				span {
+					display: inline-block;
+					width: 1.5em;
+					height: 1.5em;
+					line-height: 1.5;
+
+					@include mq(sm) {
+						width: 2.06em;
+						height: 2.06em;
+						line-height: 2.06;
+					}
+
+					text-align: center;
+					color: color(greys, dark);
+					margin: 0 .5px;
+
+					transition: color $transition--fast ease-in-out;
+				}
+
+				&:not([disabled]) {
+
+					a:hover {
+						color: color(brand, primary);
+					}
+
+					&.current a {
+						color: $color--white;
+						background-color: color(brand, primary);
+					}
+				}
+
+				&[class^="arrow"] {
+
+					a {
+						margin-right: .5em;
+						margin-left: -.625em;
+
+						&:before {
+							@extend .fa;
+						}
+					}
+
+					&[class*="left"] {
+
+						a {
+							@extend .fa-angle-left;
+						}
+
+						&[class$="double"] a {
+							@extend .fa-angle-double-left;
+						}
+					}
+
+					&[class*="right"] {
+
+						a {
+							@extend .fa-angle-right;
+						}
+
+						&[class$="double"] a {
+							@extend .fa-angle-double-right;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	[class^="pagination-mobile"] {
+
+		& {
+			font-size: 1.125em;
+			color: color(greys, dark);
+			transition: color $transition--fast ease-in-out;
+
+			&:hover {
+				color: color(brand, primary);
+			}
+			&:before,
+			&:after {
+				@extend .fa;
+			}
+		}
+
+		&[class*="prev"] {
+			&:before {
+				content: $fa-var-angle-left;
+				padding-right: .5em;
+			}
+
+		}
+		&[class*="next"]  {
+			&:after {
+				content: $fa-var-angle-right;
+				padding-left: .5em;
+			}
+		}
+	}
+}

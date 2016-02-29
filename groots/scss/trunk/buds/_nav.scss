@@ -1,0 +1,245 @@
+// ==========================================================================
+// Navigation
+// ==========================================================================
+
+
+
+@mixin nav($class: '.nav', $nav-height: 5rem, $responsive: true, $sticky: false) {
+
+	@if $responsive {
+		@include nav-icon( #{$class}__icon, $nav-height);
+        #{$class}-handler {
+            @extend #{$nav-mobile-animation};
+        }
+	}
+
+	#{$class} {
+
+		font-size: 1em;
+
+		@if $responsive {
+			height: $nav-height;
+		}
+
+        @if $sticky {
+            position: fixed;
+        } @else {
+            position: absolute;
+        }
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        &+* {
+            margin-top: $nav-height;
+        }
+
+        background: $nav-mobile-background;
+
+        z-index: map-get($zindexes, 'nav');
+
+        text-align: center;
+
+		&__brand {
+			img {
+				height: calc( #{$nav-height} - #{$gutter-width};
+				width: auto;
+			}
+			@if $responsive {
+				position: relative;
+				top: $gutter-width / 2;
+				@include mq(md) {
+					position: absolute;
+					left: $gutter-width / 2;
+				}
+			} @else {
+				position: absolute;
+				top: $gutter-width / 2;
+				left: $gutter-width / 2;
+			}
+		}
+
+		&__panel {
+
+            max-width: 100%;
+            background: $nav-mobile-background;
+
+
+
+			@if $responsive {
+				display: block;
+				position: absolute;
+				top: 0;
+                z-index: map-get($zindexes, 'nav-panel');
+
+			    list-style: none;
+			    overflow: hidden;
+			    overflow-y: auto;
+
+				width: $nav-mobile-width;
+				height: calc(100vh - #{$nav-height});
+
+				margin-top: $nav-height;
+
+				text-align: left;
+
+                #{$class}__primary > li {
+                    a {
+                        display: block;
+                        width: 100%;
+                        line-height: $nav-height;
+                    }
+                }
+
+				@include mq(md) {
+					display: inline-block;
+					position: static;
+					text-align: center;
+					width: 100%;
+
+					overflow: initial;
+
+                    height: auto;
+
+					margin-top: 0;
+
+					#{$class}__primary li {
+						display: inline-block;
+                        position: relative;
+                        ul {
+                            height: 0;
+                            position: absolute;
+                            top: $nav-height;
+                            left: 0;
+                            background: $nav-mobile-background;
+                            overflow: hidden;
+                            transition: height .7s cubic-bezier(0, 0.5, 0.5, 1);
+                            li {
+                                width: 100%;
+                            }
+                        }
+                        &:hover {
+                            ul {
+                                height: auto;
+                            }
+                        }
+					}
+				}
+			} @else {
+
+				display: inline-block;
+				position: static;
+				text-align: center;
+				width: 100%;
+				height: $nav-height;
+
+				#{$class}__primary > li {
+					display: inline-block;
+					& > a {
+						line-height: $nav-height;
+					}
+				}
+			}
+		}
+	}
+
+	#{$class}-handler {
+		overflow-x: hidden;
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.25);
+            content: '';
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index:map-get($zindexes,overlay);
+            -webkit-backdrop-filter: blur(5px);
+            will-change: opacity;
+        }
+
+        &.has-nav-open {
+            overflow: hidden;
+            .overlay {
+                opacity: 1;
+                z-index: map-get($zindexes,overlay-visible);
+            }
+        }
+        &.will-push-left {
+            #{$class}__icon {
+                left: $gutter-width / 2;
+            }
+            #{$class}__panel {
+                left: #{-$nav-mobile-width};
+                transition: left .5s ease-out;
+                will-change: left;
+            }
+            &.has-nav-open #{$class}__panel {
+                left: 0;
+            }
+            &>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                position: relative;
+                transition: left .5s ease-out;
+                left: 0;
+                will-change: left;
+            }
+            &.has-nav-open>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                left: $nav-mobile-width;
+            }
+        }
+        &.will-push-right {
+            #{$class}__icon {
+                right: $gutter-width / 2;
+            }
+            #{$class}__panel {
+                right: #{-$nav-mobile-width};
+                transition: right .5s ease-out;
+                will-change: right;
+            }
+            &.has-nav-open #{$class}__panel {
+                right: 0;
+            }
+            &>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                position: relative;
+                transition: right .5s ease-out;
+                right: 0;
+                will-change: right;
+            }
+            &.has-nav-open>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                right: $nav-mobile-width;
+            }
+
+        }
+        &.will-zoom-out {
+            perspective: 2000px;
+
+            #{$class}__panel {
+                left: #{-$nav-mobile-width};
+                will-change: left;
+            }
+
+            &>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                position: relative;
+                transition: transform .5s;
+                left: 0;
+                will-change: left;
+            }
+            &.has-nav-open>*:not(#{$class}):not(.overlay):not(.mfp-wrap) {
+                transform: translateZ(-100px);
+                transform-origin: center center;
+                transform-style: preserve-3d;
+            }
+        }
+	}
+}
+
+
+
+
+
+
+

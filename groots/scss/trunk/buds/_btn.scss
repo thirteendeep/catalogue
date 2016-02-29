@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+//
+// Groots basic button styles
+//
+// TODO: Create custom variable for btn?
+//
+
+// The mixin way
+
+// @mixin gr-btn(
+//     $class: '.gr-btn',
+//     $btn-padding-y: $padding,
+//     $btn-padding-x: $padding,
+//     $btn-font-size: $root-font-size,
+//     $btn-border-radius: 0,
+//     $btn-bg-color: $color--primary,
+//     $btn-bg-active: $color--secondary,
+//     $btn-border-color: transparent,
+//     $btn-border-active: transparent,
+//     $btn-effect: null
+// ) {
+//     #{$class} {
+//         display: inline-block;
+//         @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+//         background-color: color('greys', 'light');
+//         border: 1px solid transparent;
+//         color: $white;
+//         text-transform: uppercase;
+//     }
+
+//     #{$class}--primary {
+//         @include button-variant($btn-bg-color, $btn-bg-active, $btn-border-color, $btn-border-active, $btn-effect);
+//     }
+
+// }
+
+// @include gr-btn('.w1-btn', 10px, 15px, 1em, 6px, blue, purple, purple, blue);
+// @include gr-btn('.w1-btn-2');
+
+.b-btn {
+    @include button-size(em(16px), em(16px), 1em, 6px);
+    display: inline-block;
+    background-color: color('greys', 'light');
+    color: $white;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+// Size modifiers
+// ==========================================================================
+
+.b-btn--small {
+    font-size: em(14px);
+}
+
+.b-btn--large {
+    font-size: em(18px);
+}
+
+// Variants
+// ==========================================================================
+
+.b-btn--primary {
+    @include button-variant($color--primary, $white, color('greys', 'light'), color('greys', 'light'));
+    transition: all 240ms ease-out;
+
+    &:hover {
+        color: $color--globalia;
+        transform: translate3d(0,-0.25em,0);
+    }
+}
+
+.b-btn--secondary {
+    @include button-variant($color--secondary, $white, color('greys', 'light'), color('greys', 'light'));
+    transition: all 240ms ease-out;
+
+    &:hover {
+        color: $color--globalia;
+        transform: translate3d(0,-0.25em,0);
+    }
+}
+
+.b-btn--info {
+    @include button-variant($gr-blue-400, $gr-blue-700 , color('greys', 'light'), color('greys', 'light'));
+}
+
+.b-btn--sucess {
+    @include button-variant($md-green-400, $md-green-700 , color('greys', 'light'), color('greys', 'light'));
+}
+
+.b-btn--warning {
+    @include button-variant($md-red-400, $md-red-700 , color('greys', 'light'), color('greys', 'light'));
+}
+
+// Flatt effect
+// ==========================================================================
+
+.b-btn-flatt {
+    @include button-size(em(15px), em(30px), 1em, 0);
+    display: inline-block;
+    background-color: color('greys', 'light');
+    color: $white;
+}
+
+.b-btn-flatt--primary {
+    @include button-variant($color--primary, $gr-blue-700, transparent, transparent, flatt);
+}
+
+.b-btn-flatt--secondary {
+    @include button-variant($color--secondary, darken($color--secondary, 8%), transparent, transparent, flatt);
+}

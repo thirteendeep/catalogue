@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Main
+   ========================================================================== */
+
+// /**
+//  * The main is the page wrapper.
+//  *
+//  */
+
+.gui-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // temporary style to push gui footer
+    // .gui__footer {
+    //     @include mq(md) {
+    //         margin-left: 280px; // aside width
+    //         width: calc(100% - 280px); // aside width
+    //     }
+    // }
+}

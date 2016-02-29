@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Banner
+   ========================================================================== */
+
+// /**
+//  * The banner is the header to content.
+//  *
+//  */
+
+.gui-info {
+    position: relative;
+    height: 28vh;
+    background: $color--globalia;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gui-info__inner {
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 3em $gutter-width / 2;
+    font-size: 1em;
+    text-align: center;
+
+    @include mq(sm) {
+        width: 100%;
+        max-width: calc( 2 * #{$container-width} / 3);
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,25 @@
+// ==========================================================================
+// Main
+// ==========================================================================
+
+// “One file to rule them all,
+//  One file to find them,
+//  One file to bring them all,
+//  And in the Sass way merge them.”
+
+@import "variables";
+/@import "fonts/fonts";
+
+// Bower imports goes here
+//@import "../vendor/sanitize-css/sanitize.scss";
+//@import "../vendor/components-font-awesome/scss/font-awesome";
+//@import "../vendor/magnific-popup/src/css/main";
+//@import "../vendor/slick-carousel/slick/slick.scss";
+//@import "../vendor/slick-carousel/slick/slick-theme.scss";
+//@import "../vendor/pikaday/scss/pikaday.scss";
+//@import "../vendor/owl.carousel/src/scss/owl.carousel.scss";
+//@import "../vendor/owl.carousel/src/scss/owl.theme.default.scss";
+
+@import "trunk/trunk";
+
+@import "leaves/leaves";

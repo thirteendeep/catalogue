@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+// Utilities
+@import "mixins/breakpoints";
+@import "mixins/grid";
+@import "mixins/font-face";
+@import "mixins/keep-ratio";
+@import "mixins/placeholder";
+@import "mixins/rem";
+@import "mixins/text-hide";
+@import "mixins/icons";
+
+
+// Components
+@import "mixins/buttons";
+@import "mixins/pagination";
+
+// Layouts
+@import "mixins/clearfix";

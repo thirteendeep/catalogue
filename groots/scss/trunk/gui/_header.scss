@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+// /**
+//  * The header is the page header
+//  *
+//  * TODO: Create hamburger icon via mixin
+//  *
+//  */
+
+.gui-header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-self: stretch;
+    align-items: center;
+    height: 64px;
+    padding: remy(35px) remy(70px);
+    z-index: 3;
+    background-color: $gr-blue-700;
+    color: $white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+
+    // @include mq(md) {
+    //     position: relative;
+    //     margin-left: 280px; // aside width
+    //     width: calc(100% - 280px); // aside width
+    //     padding: remy(35px) remy(35px);
+    // }
+}
+
+// .gui-header__title {}
+
+.gui-header__svg {
+    position: absolute;
+    top: 50%;
+    left: $gutter-width/2;
+    display: block;
+    width: 32px;
+    height: 32px;
+    fill: $white;
+    cursor: pointer;
+    z-index: 50;
+    transform: translateY(-50%);
+
+    // @include mq(md) {
+    //     display: none;
+    // }
+}

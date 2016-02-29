@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Mixins text-hide
+   ========================================================================== */
+
+// /*
+//  * Hides the text in an element, commonly used to show an image.
+//  * Some elements will need block-level styles applied.
+//  *
+//  *
+//  * @example scss - Usage
+//  *   .element {
+//  *     @include text-hide;
+//  *   }
+//  *
+//  * @example css - Output
+//  *   .element {
+//  *     overflow: hidden;
+//  *     text-indent: 101%
+//  *     white-space: nowrap;
+//  *   }
+//  */
+
+
+@mixin text-hide {
+    overflow: hidden;
+    text-indent: 101%;
+    white-space: nowrap;
+}

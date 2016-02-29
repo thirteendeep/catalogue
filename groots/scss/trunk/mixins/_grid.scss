@@ -1,0 +1,74 @@
+
+@mixin container($attribute: 'grid') {
+  @extend [#{$attribute}=""];
+}
+
+@mixin row($attribute: 'grid') {
+  @extend [#{$attribute}~=row];
+}
+
+@mixin col($bp, $col, $attribute: 'grid') {
+  @extend [#{$attribute}*="-"];
+  @extend [#{$attribute}~="#{$bp}-#{$col}"];
+}
+
+@mixin block-grid($bp, $col, $attribute: 'grid') {
+  @extend [block-#{$attribute}]:not([block-#{$attribute}=block]);
+  @extend [block-#{$attribute}~="#{$bp}-#{$col}"];
+}
+
+@mixin block($attribute: 'grid') {
+  @extend [block-#{$attribute}=block];
+}
+
+@mixin flex-center($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="center-#{$bp}"];
+}
+
+@mixin flex-start($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="start-#{$bp}"];
+}
+
+@mixin flex-end($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="end-#{$bp}"];
+}
+
+@mixin flex-between($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="between-#{$bp}"];
+}
+
+@mixin flex-around($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="around-#{$bp}"];
+}
+
+@mixin flex-top($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="top-#{$bp}"];
+}
+
+@mixin flex-middle($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="middle-#{$bp}"];
+}
+
+@mixin flex-bottom($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="bottom-#{$bp}"];
+}
+
+@mixin flex-first($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="first-#{$bp}"];
+}
+
+@mixin flex-last($bp, $attribute: 'grid') {
+  @extend [#{$attribute}~="last-#{$bp}"];
+}
+
+@mixin offset($bp, $col, $attribute: 'grid') {
+  @extend [#{$attribute}~="#{$bp}-offset-#{$col}"];
+}
+
+@mixin push($bp, $col, $attribute: 'grid') {
+  @extend [#{$attribute}~="#{$bp}-push-#{$col}"];
+}
+
+@mixin pull($bp, $col, $attribute: 'grid') {
+  @extend [#{$attribute}~="#{$bp}-pull-#{$col}"];
+}

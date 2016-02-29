@@ -1,0 +1,39 @@
+// ==========================================================================
+// Tabs
+// ==========================================================================
+
+@mixin tabs($class: '.tabs', $breakpoint: sm) {
+
+	#{$class} {
+
+		&.accordion-tabs {
+            margin: 0;
+            padding: 0;
+
+            .tab {
+                list-style: none;
+            }
+
+            .tab-link {
+                display: block;
+            }
+
+            .tab-content {
+                display: none;
+                width: 100%;
+            }
+
+            @include media($breakpoint) {
+                .tab {
+                    display: inline;
+                }
+                .tab-link {
+                    display: inline-block;
+                }
+                .tab-content {
+                    float: left;
+                }
+            }
+        }
+	}
+}

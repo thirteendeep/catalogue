@@ -1,0 +1,33 @@
+// ==========================================================================
+// Breadcrumb
+// ==========================================================================
+
+@mixin breadcrumb($class: '.breadcrumb', $separator: "\f105") {
+
+	#{$class} {
+		list-style: none;
+		li {
+	        display: inline-block;
+			a {
+				color: color(brand, secondary);
+				transition: color $transition--fast ease-in-out;
+				
+				&:hover {
+					color: color(brand, primary);
+				}
+			}
+	        &:not(:last-child):after {
+	            margin: 0 .2em;
+	            display: inline-block;
+	            font-family: $ff__fa;
+	            content: $separator;
+	        }
+	        &:last-child {
+	            a {
+	                cursor: default;
+					color: color(brand, primary);
+	            }
+	        }
+	    }
+	}
+}

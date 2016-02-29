@@ -1,0 +1,64 @@
+// ==========================================================================
+// Cards
+// ==========================================================================
+
+@mixin banner($class: '.banner', $height: 100vh, $breakpoint: sm, $padding: 0) {
+
+    #{$class} {
+        position: relative;
+
+        &__cover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            overflow: hidden;
+            &:before {
+                content:'';
+                display: block;
+                width: 100%;
+                padding-top: $height;
+            }
+            img {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: auto;
+                transform: translate3d(-50%,-50%,0);
+                min-width: 100vw;
+                min-height: 100%;
+            }
+        }
+
+        &__inner {
+            font-size: 1em;
+            padding: $padding $gutter-width / 2;
+            position: relative;
+            text-align: center;
+        }
+
+        @include mq($breakpoint) {
+
+            height: $height;
+
+            &__inner {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                max-width: calc( 2 * #{$container-width} / 3);
+                margin: 0 auto;
+                padding-top: 0;
+                padding-bottom: 0;
+                &>* {
+                    transform: translateZ(0);
+                    -webkit-filter: blur(0);
+                }
+            }
+        }
+    }
+}

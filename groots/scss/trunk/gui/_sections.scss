@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.gui-section-title {
+    background-color: $cl-blue-grey-100;
+    padding: remy(35px) remy(35px);
+    color: $root-color;
+
+    h2 {
+        margin: 0 0 .5rem;
+        font-size: remy(36px);
+        font-weight: normal;
+        line-height: 1;
+        color: inherit;
+        letter-spacing: -.05em;
+    }
+}
+
+.gui-section {
+    @include mq(sm) {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    .col {
+        padding: remy(32px) remy(32px);
+        border-bottom: 1px solid $cl-blue-grey-100;
+
+        @include mq(sm) {
+            display: table-cell;
+            vertical-align: top;
+            padding: remy(40px) remy(40px);
+        }
+    }
+
+    .col + .col {
+        background: $cl-blue-grey-50;
+    }
+
+    ul {
+        padding-left: remy(20px);
+
+        @include mq(sm) {
+            padding-left: remy(40px);
+        }
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    h3 {
+        margin: 0 0 .5rem;
+    }
+
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 1em;
+    }
+}
+
+.gui-section__showcase {
+    margin-top: remy(40px);
+}

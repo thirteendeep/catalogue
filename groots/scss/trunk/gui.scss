@@ -1,0 +1,32 @@
+// ==========================================================================
+// Build gui stylesheet
+// ==========================================================================
+
+// Gui style only
+//
+// TODO: Move Mixins?
+//   Move variables to global.
+//   Refactor buds so we dont have to import them two times (remove mixin way)
+@import "../../vendor/components-font-awesome/scss/_variables.scss";
+$swatch-width: 2em;
+$gui__title--color: #999;
+
+// Utilities
+@import "../variables";
+@import "maps";
+@import "functions";
+@import "helpers";
+@import "mixins";
+
+// Gui
+@import "gui/aside";
+@import "gui/banner";
+@import "gui/codes";
+@import "gui/color-swatches";
+@import "gui/content";
+@import "gui/gui-global";
+@import "gui/header";
+@import "gui/main";
+@import "gui/overlay";
+@import "gui/sections";
+@import "gui/logos";

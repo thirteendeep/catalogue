@@ -1,0 +1,79 @@
+// ==========================================================================
+// Navigation Icon (responsive CTA)
+// ==========================================================================
+
+@mixin nav-icon($class: '.nav-main__icon', $nav-height: 5rem) {
+
+    #{$class} {
+
+        font-size: 1em;
+
+    	display: inline-block;
+        position: absolute;
+
+        top: $gutter-width / 2;
+
+        width: calc( #{$nav-height} - #{$gutter-width} );
+        height: calc( #{$nav-height} - #{$gutter-width} );
+
+        cursor: pointer;
+        text-align: left;
+
+        transition: all .5s ease-out;
+
+        z-index: map-get($zindexes, 'nav-icon');
+
+        @include mq(md) {
+        	display: none;
+        }
+
+        &__bar {
+            display: block;
+            position: absolute;
+            left: 25%;
+            top: calc(50% - #{$nav-icon-bar-width/2});
+            width: 50%;
+            height: $nav-icon-bar-width;
+            background: $nav-icon-bar-color;
+            transition: all 240ms ease-out;
+
+            &:before,
+            &:after {
+                content: '';
+                position:absolute;
+                width: 100%;
+            	height: $nav-icon-bar-width;
+                background: $nav-icon-bar-color;
+                transition: all 240ms ease-out;
+            }
+
+            &:before {
+                top: #{-$nav-icon-bar-width*2};
+            }
+            &:after {
+                top: #{$nav-icon-bar-width*2};
+            }
+
+            .has-nav-open & {
+            	top: 50%;
+                background: transparent;
+                transition: all 240ms ease;
+
+                &:before,
+                &:after {
+                    left: 0;
+                    top: 0;
+                    transition: transform 240ms ease-in;
+                    transform-origin: 50% 50%;
+                }
+
+                &:before {
+                    transform: rotate3d(0, 0, 1, 45deg);
+                }
+                &:after {
+                    transform: rotate3d(0, 0, 1, -45deg);
+                }
+            }
+        }
+    }
+}

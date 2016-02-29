@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Color Swatches
+   ========================================================================== */
+
+.color-swatches {
+    overflow:hidden;
+    .color-swatch {
+        float: left;
+        width: $swatch-width*2;
+        height: $swatch-width*2;
+        line-height: $swatch-width*2;
+        margin: 0 5px 10px;
+        border-radius: 50%;
+        text-align: center;
+        color: $snow-white;
+        @include mq(sm) {
+            width: $swatch-width*3;
+            height: $swatch-width*3;
+            line-height: $swatch-width*3;
+        }
+        span {
+            display: none;
+        }
+        &.cs-gui {
+            background-color: $color--globalia;
+            float: none;
+            margin: 1em auto 1em;
+            font-size: 2.5em;
+            @include mq(sm) {
+                margin-top: 0;
+            }
+        }
+    }
+    &--small {
+        @extend .color-swatches;
+        overflow: visible;
+        .color-swatch {
+            width: $swatch-width;
+            height: $swatch-width;
+            line-height: $swatch-width;
+            @include mq(sm) {
+                width: $swatch-width*2;
+                height: $swatch-width*2;
+                line-height: $swatch-width*2;
+            }
+        }
+    }
+}
+
+@each $name, $color-swatch in map-get($colors, brand) {
+    .cs-brand-#{$name} {
+        background-color: $color-swatch;
+        &:before {
+            content: "#{$color-swatch}";
+            font-size: .75em;
+        }
+    }
+}
+@each $name, $color-swatch in map-get($colors, greys) {
+    .cs-grey-#{$name} {
+        background-color: $color-swatch;
+        &:before {
+            content: "#{$color-swatch}";
+            font-size: .75em;
+        }
+    }
+}

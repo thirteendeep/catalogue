@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+// /**
+//  * The content is the content wrapper.
+//  *
+//  */
+
+.gui-content {
+    display: inline-block;
+    margin-top: 70px; // header height
+
+    // @include mq(md) {
+    //    margin-left: 280px; // equal to aside width
+    //    margin-top: 0;
+    // }
+}

@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Mixins Font-face
+   ========================================================================== */
+
+// /**
+//  * Generate font-faces
+//  *
+//  *
+//  * @example scss - Usage
+//  *   @include font-face(fontName, #{$ff__path}, bold);
+//  *   @include font-face(fontName, #{$ff__path}, normal, italic);
+//  */
+
+@mixin font-face ( $font-family, $filename, $weight : normal, $style : normal ) {
+    @font-face {
+        font-family: $font-family;
+        src: url($filename + '.eot');
+        src: url($filename + '.eot?#iefix') format('embedded-opentype'),
+             url($filename + '.woff') format('woff'),
+             url($filename + '.ttf') format('truetype');
+        font-weight: $weight;
+        font-style: $style;
+    }
+}

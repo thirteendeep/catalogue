@@ -1,0 +1,168 @@
+//  ==========================================================================
+//  Variables
+//  ==========================================================================
+
+
+//  Fonts Families
+//  --------------------------
+
+$ff--primary           : "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+$ff--secondary         : "Oswald", "Helvetica Neue", Helvetica, sans-serif;
+
+$ff__path              : "../fonts/";
+$ff__icon              : "";
+$ff__fa                : "fontAwesome";
+
+//  Colors (overwrite & extend the $colors map)
+//  --------------------------
+//  By default :
+//  $colors : (
+//      brand: (
+//          primary     : $color--primary,
+//          secondary   : $color--secondary
+//      ),
+//      greys : (
+//          xdark       : lighten($color--black,20%),
+//          dark        : lighten($color--black,35%),
+//          base        : lighten($color--black,50%),
+//          light       : lighten($color--black,65%),
+//          xlight      : lighten($color--black,80%),
+//      ),
+//      parsley : (
+//          error       : $color--error
+//      )
+//  )
+//  Usage :
+//  color: color('greys', 'xlight');
+//  color: color('brand', 'primary');
+
+// Color palette
+$md-red-400    : #F44336;
+$md-red-700    : #D32F2F;
+$md-green-400  : #4CAF50;
+$md-green-700  : #388E3C;
+$gr-blue-200   : #0B9BDB;
+$gr-blue-400   : #037DC3;
+$gr-blue-700   : #005BAA;
+
+$color--globalia    : #1982c4;
+$color--white       : #FFFFFF;
+$color--error       : $md-red-400;
+$color--black       : #000000;
+$color--red         : #ce000c;
+$color--charcoal    : #252525;
+$cl-blue-grey-50    : #ECEFF1;
+$cl-blue-grey-100   : #CFD8DC;
+$cl-border-color    : #e0e0e0;
+
+$color--primary     : $color--red;
+$color--secondary   : $color--charcoal;
+
+$colors-project : (
+    brand: (
+        primary     : $color--primary,
+        secondary   : $color--secondary,
+        white      : $color--white
+    ),
+    greys : (
+        xdark       : lighten($color--black,20%),
+        dark        : lighten($color--black,35%),
+        base        : lighten($color--black,50%),
+        light       : #cbcbcb,
+        xlight      : #f0f0f0,
+    ),
+);
+
+//  Global variables
+//  --------------------------
+$root-color         : $color--secondary;
+$root-font-family   : $ff--primary;
+$root-font-size     : 16px;
+$root-line-height   : 1.44;
+
+$margin   : 1em;
+$padding  : 1em;
+
+$border   : 1px solid lighten($color--black,80%);
+$radius   : .5em;
+
+
+
+
+
+
+//  Headings
+//  --------------------------
+$h1 : $root-font-size * 1.75;   // 28px;
+$h2 : $root-font-size * 1.5;    // 24px;
+$h3 : $root-font-size * .875;    // 14px;
+$h4 : $root-font-size;          // 16px;
+$h5 : $root-font-size;          // 16px;
+$h6 : $root-font-size;          // 16px;
+
+//  Transitions
+//  --------------------------
+$transition--fast   : 240ms;
+$transition--normal : 480ms;
+$transition--slow   : 720ms;
+
+//  Breakpoints
+//  --------------------------
+//  @example scss - Usage
+//   @include mq(md) {...}
+//
+//  create mobile-first media-query ( min-width >= breakpoint )
+
+$breakpoints : (
+root: 0,
+xs:   40em, // 640px
+sm:   48em, // 768px
+smd:  60em, // 960px
+md:   64.8em, // 1024px
+lg:   80em, // 1280px
+xl:   96em  // 1536px
+);
+
+//  Grid settings
+//  --------------------------
+//  @example scss - Usage
+//     @include grid(wrapper-class, $grid-columns, $gutter-width, $container-width, flexbox-enabled?);
+//     additionnal params:
+//          wrapper-class (ex:'.grid')
+//          flexbox-enabled (ex:false)
+//
+//  create responsive grid based on $breakpoints
+
+$grid-columns       : 12;
+$gutter-width       : 30px;
+$container-width    : 1660px;
+
+//  Components
+//  --------------------------
+$zindexes: (
+overlay             : -1,
+overlay-visible     : 9,
+nav                 : 40,
+nav-icon            : 41,
+nav-panel           : 39
+);
+
+//  Navigation
+//  --------------------------
+$nav-icon-bar-width         : 3px;
+$nav-icon-bar-color         : $color--black;
+$nav-height                 : 4rem;
+$nav-mobile-width           : 400px;
+$nav-mobile-animation       : ".will-push-right"; //Values: [".will-push-left", ".will-push-right", ".will-zoom-out"]
+$nav-mobile-background      : $color--white;
+
+
+
+
+
+
+// Aliases variables
+$white              : $color--white;
+$black              : $color--black;
+$snow-white         : $color--white;
+$darth-vader        : $color--black;

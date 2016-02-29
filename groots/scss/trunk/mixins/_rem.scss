@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Mixins REM
+   ========================================================================== */
+
+//  /*
+//  * Transform pixel to rem with px fallback
+//  *
+//  *
+//  * @example scss - Usage
+//  *   @include rem('padding',10px 15px)
+//  *   @include rem('font-size',10px)
+//  */
+
+
+@mixin rem($property, $values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);
+      $val: strip-unit($value);
+      $base: strip-unit($fs);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / $base + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * $base + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}

@@ -1,0 +1,18 @@
+// ==========================================================================
+// Helpers
+// ==========================================================================
+
+%clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+%caret-down-64 {
+	content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVQ4T62S0Q2AIAxEj4lcxRFkMh3BVZxIcxAIKkVp6SfkvRzlHIzjjDyGCGYAkzLJwQSnEg4YBQuAVSnxaQcaiQewlUvskQQ4PaFM/0eS4ZqAZy3JDZYEkuQFtwRPSRX+EvCeJePs0jcPqbKyQxEzJ7gABdcQwAP2aP8AAAAASUVORK5CYII=');
+}
+%caret-up-64 {
+	content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAeklEQVQ4T7XSUQ2AIBRG4UMCjWIDZwOjWMUmNpAIRpEEurvJpsgdCoP38+3fLobCZwp7qgMTcACztlRb0AIr0F3hBgzAHkIxIIx9E0VCQItV5A6k4ijiga/xCxHgb/xABLBAn/mhrABymiYTcALIrcdMYKn+lZPDihecLyMYAHZD9GIAAAAASUVORK5CYII=');
+}

@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Mixins Media-query
+   ========================================================================== */
+
+// /**
+//  * Generating basic media queries based on breakpoint variables
+//  *
+//  * @require map-variables $breakpoints
+//  *
+//  * @example scss - Usage
+//  *   @include mq(sm) {
+//  *     ...
+//  *   }
+//  *
+//  * @example css - CSS Output
+//  *   @media only screen and (min-width:48em) {
+//  *     ...
+//  *   }
+//  */
+
+@mixin mq($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+            + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}

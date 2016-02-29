@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Mixins Placeholder
+   ========================================================================== */
+
+// /*
+//  * Style input's placeholder
+//  *
+//  *
+//  * @example scss - Usage
+//  *   input {
+//  *     @include placeholder { color: red; }
+//  *   }
+//  */
+
+
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder { @content; }
+  }
+}

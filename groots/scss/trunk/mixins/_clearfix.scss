@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Mixins Clearfix
+   ========================================================================== */
+
+// /**
+//  * Provides an easy way to include a clearfix for containing floats.
+//  *
+//  *
+//  * @example scss - Usage
+//  *   .element {
+//  *     @include clearfix;
+//  *   }
+//  *
+//  * @example css - Output
+//  *   .element::after {
+//  *     clear: both;
+//  *     content: "";
+//  *     display: table;
+//  *   }
+//  */
+
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}

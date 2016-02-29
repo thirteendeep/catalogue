@@ -1,0 +1,35 @@
+// ==========================================================================
+// Table
+// ==========================================================================
+
+@mixin table($class: '.table-container', $border-collapse : false) {
+
+	#{$class}{
+
+		width: 100%;
+		overflow: auto;
+
+		table {
+
+			@if $border-collapse {
+				border-collapse: collapse;
+			}
+
+			th {
+				border: $border;
+				background-color: color(brand, primary);
+				border-color: $black;
+				color: $white;
+			}
+
+			td {
+				border: $border;
+				border-color: $black;
+			}
+
+			a {
+				color: $white;
+			}
+		}
+	}
+}

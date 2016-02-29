@@ -1,0 +1,11 @@
+.DS_Store
+/node_modules
+npm-debug.log
+/nbproject
+/.sass-cache
+/groots/gulp/configs/options.js
+/groots/vendor/*
+!/groots/vendor/.gitkeep
+/public/dist
+/public/gui
+/public/.htaccess

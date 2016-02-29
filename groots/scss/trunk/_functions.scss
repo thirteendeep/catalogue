@@ -1,0 +1,95 @@
+// ==========================================================================
+// Functions
+// ==========================================================================
+
+/// Strips the unit from a number.
+/// --------------------------------------------------
+///
+/// @param {Number (With Unit)} $value
+///
+/// @example scss - Usage
+///   $dimension: strip-units(10em);
+///
+/// @example css - CSS Output
+///   $dimension: 10;
+///
+/// @return {Number (Unitless)}
+
+@function strip-unit($val) {
+  @return ($val / ($val * 0 + 1));
+}
+
+
+/// Convert pixels to ems
+/// --------------------------------------------------
+///
+/// eg. for a relational value of 12px write em(12px) when the parent is 16px
+/// if the parent is another value say 24px write em(12px, 24px)
+///
+/// @example scss - Usage
+///   font-size: em(12px);
+///   font-size: em(12px, 24px);
+///   font-size: em(12px 20px, 24px);
+
+@function em($values, $context: $root-font-size) {
+  $em: ();
+
+  @each $value in $values {
+    @if $value == 0 or $value == auto {
+      $em: append($em, $value);
+    }
+    @else {
+      $em: append($em, ( ( $value/ $context ) * 1em ));
+    }
+  }
+
+  @return $em;
+}
+
+// Convert pixels to rems
+// eg. for a relational value of 12px write rem(12)
+// Assumes $em-base is the font-size of <html>
+
+@function remy($pxval) {
+  @if not unitless($pxval) {
+    $pxval: strip-unit($pxval);
+  }
+
+  $base: $root-font-size;
+  @if not unitless($base) {
+    $base: strip-unit($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}
+
+
+/// Color mapping
+/// --------------------------------------------------
+///
+/// @example scss - Usage
+///   color: color('greys', 'xlight');
+///
+/// @example css - CSS Output
+///   color: #E8E8E8;
+///
+
+@function color($color-map, $variation) {
+    @return map-get(map-get($colors, $color-map), $variation);
+}
+
+/// Social Set
+/// --------------------------------------------------
+/// Returns a value from the specified set with the specified key
+///
+/// @example scss - Usage
+/// .twitter {
+///     background-color: socialSet('twitter', 'color');
+///     &:after {
+///         content: socialSet('twitter', 'char');
+///     }
+/// }
+///
+
+@function socialSet($set, $key){
+    @return map-get(map-get($socials, $set), $key);
+}

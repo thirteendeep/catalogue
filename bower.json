@@ -1,0 +1,20 @@
+{
+  "name": "GRoots",
+  "description": "Frontend Framework Development Starter-Kit",
+  "version": "0.5.0",
+  "main": [],
+  "dependencies": {
+    "jquery": "latest",
+    "modernizr": "latest",
+    "sanitize-css": "latest",
+    "components-font-awesome": "latest",
+    "parsleyjs": "latest",
+    "magnific-popup": "latest",
+    "slick-carousel": "latest",
+    "owl.carousel": "latest",
+    "flexibility": "latest",
+    "moment": "latest",
+    "pikaday": "latest"
+  },
+  "ignore": []
+}

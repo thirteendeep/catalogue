@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Aside
+   ========================================================================== */
+
+// /*
+//  * The aside is the main navigation for groots
+//  *
+//  * @scss
+//  * The page need to be wrapped by the class .gui-main.
+//  * The content of the page next to the aside need to be wrapped
+//  * by the class .gui-content. A element with the class .gui-overlay
+//  * also need to be placed at the end of .gui-main.
+//  *
+//  * @js
+//  * Fonctionalities are grouped in the js partials 'js/plugins/gr-aside.js'
+//  * The action classes are [js-gr-menu], [js-gr-aside] and [js-gr-overlay]
+//  *
+//  * TODO:
+//  *
+//  */
+
+.gui-aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 280px;
+    height: 100%;
+    max-height: 100%;
+    padding-top: 70px;
+    transform: translateX(-290px);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-property: transform;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    border-right: 1px solid $cl-border-color;
+    font-size: remy(16px);
+    background-color: $white;
+    overflow: visible;
+    overflow-y: auto;
+    z-index: 50;
+
+    // @include mq(md) {
+    //     transform: translateX(0);
+    // }
+
+    &.is-open {
+        transform: translateX(0);
+    }
+
+    ul {
+        list-style-type: none;
+    }
+}
+
+.gui-aside__header {
+    .gui-aside__link {
+        font-size: em(16px);
+        height: 64px;
+        line-height: 64px;
+    }
+
+    i {
+        margin-right: 0.5em;
+    }
+}
+
+.gui-aside__header {
+    border-top: 1px solid $cl-border-color;
+}
+
+.gui-aside__body {
+    border-top: 1px solid $cl-border-color;
+}
+
+.gui-aside__brand {
+    position: absolute;
+    top: $gutter-width/2;
+    left: 50%;
+    width: 38px;
+    transform: translateX(-50%);
+
+    img {
+        width: 100%;
+    }
+}
+
+.gui-aside__subnav {
+    .gui-aside__link {
+        padding-left: remy(($gutter-width/2) + ($gutter-width));
+        font-size: em(15px);
+        font-weight: 400;
+    }
+}
+
+.gui-aside__item {
+    display: block;
+    line-height: 44px;
+}
+
+.gui-aside__link {
+    display: block;
+    color: $root-color;
+    font-size: em(16px);
+    height: 44px;
+    line-height: 44px;
+    font-weight: 700;
+    padding-left: remy($gutter-width);
+    padding-right: remy($gutter-width);
+
+    &:hover,
+    &.is-active {
+        background-color: #F5F5F5;
+    }
+}
