@@ -1,0 +1,50 @@
+.table-des-matieres {
+    width: 100%;
+    border-spacing: 10px;
+    padding: 0 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    thead {
+        tr {
+            span {
+                background-color: #fff;
+                padding-right: 10px;
+            }
+            td:nth-child(1) {
+                background: none;
+            }
+            td {
+                font-size: em(24px);
+                color: #5f5f5f;
+                font-family: "Patua One";
+
+                span > span {
+                    color: #afafaf;
+                }
+            }
+        }
+    }
+    tr {
+        td:nth-child(1) {
+            width: auto;
+            background-image: url('/dist/images/dot.png');
+            background-repeat: repeat-x;
+            background-position: left bottom;
+        }
+        td:nth-child(2) {
+            text-align: right;
+            width: 40px;
+            vertical-align: bottom;
+            font-family: "News Cycle";
+        }
+        td {
+            font-size: em(18px);
+        }
+    }
+
+    .table-des-matieres__product-title {
+        padding-right: 10px;
+        background-color: #fff;
+        font-family: "News Cycle";
+    }
+}

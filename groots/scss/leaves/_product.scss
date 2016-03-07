@@ -1,0 +1,103 @@
+.product__header-categorie {
+    width: 100%;
+    padding: 0 35px;
+    font-family: "Patua One";
+
+    td:nth-child(1) {
+
+    }
+    td:nth-child(2) {
+        text-align: right;
+        font-size: em(18px);
+        color: #afafaf;
+    }
+
+    td {
+        font-size: em(30px);
+        color: #5f5f5f;
+        line-height: 40px;
+
+        span {
+            color: #afafaf;
+        }
+    }
+    .border {
+        border-top: 1px solid #d8dde6;
+        height: 1px;
+        line-height: 1px;
+    }
+}
+
+
+.product {
+    width: 100%;
+    padding: 0 35px;
+    margin-bottom: 40px;
+    font-family: "News Cycle";
+
+    thead {
+        border-top: 1px solid #d8dde6;
+        td:nth-child(1) {
+
+        }
+        td:nth-child(2) {
+
+        }
+        td:nth-child(3) {
+            width: auto;
+        }
+        td {
+            font-size: em(15px);
+        }
+    }
+
+    td:nth-child(1) {
+        width: 110px;
+    }
+    td:nth-child(2) {
+        min-width: 240px;
+    }
+    td:nth-child(3),
+    td:nth-child(4),
+    td:nth-child(5) {
+        width: auto;
+    }
+
+    td {
+        vertical-align: top;
+        span {
+            display: block;
+        }
+    }
+
+    .product__name {
+        font-size: em(20px);
+        font-weight: bold;
+    }
+
+    .product__description {
+        font-size: em(14px);
+        text-transform: uppercase;
+    }
+
+    .product__code {
+        font-size: em(14px);
+        text-transform: uppercase;
+    }
+
+    .product__infos-title {
+        font-size: em(14px);
+    }
+
+    .product__infos-value {
+        font-size: em(18px);
+        font-weight: bold;
+    }
+
+    .border {
+        border-top: 1px solid #d8dde6;
+        height: 1px;
+        line-height: 1px;
+    }
+
+}
