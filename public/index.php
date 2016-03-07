@@ -53,7 +53,32 @@
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="" />
 </head>
-<body class="">
+<body>
+
+
+    <table class="cover">
+        <tr>
+            <td>
+                <img src="/dist/images/cover.png">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Catalogue complet</span>
+                <span>version PDF</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Catalogue imprimé le : 7 janvier 2016
+            </td>
+        </tr>
+        <tfoot>
+            <td>
+                &nbsp;
+            </td>
+        </tfoot>
+    </table>
 
     <table class="header-page">
         <tr>
